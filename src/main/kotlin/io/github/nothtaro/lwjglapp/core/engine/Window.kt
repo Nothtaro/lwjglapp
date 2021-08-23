@@ -1,11 +1,11 @@
-package io.github.nothtaro.lwjglapp
+package io.github.nothtaro.lwjglapp.core.engine
 
 import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.system.MemoryUtil
 
-class LWJGLWindow(var title: String, var width: Int, var height: Int) {
+class Window(title: String, width: Int, height: Int) {
     var id = 0L
-    var vsync = false
+    //var vsync = false
 
     init {
         //GLFWウィンドウの作成
@@ -16,13 +16,15 @@ class LWJGLWindow(var title: String, var width: Int, var height: Int) {
             println("GLFWウィンドウを作成しました id: $id")
         }
 
-        glfwSetKeyCallback(this.id) { window: Long, key: Int, scancode: Int, action: Int, mods: Int ->
+        glfwSetKeyCallback(this.id) { window: Long, key: Int, _: Int, action: Int, _: Int ->
             if(key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(window,true)
         }
     }
 
-    fun isKeyPressed(keyCode: Int): Boolean {
+   /*
+   fun isKeyPressed(keyCode: Int): Boolean {
         return glfwGetKey(this.id, keyCode) == GLFW_PRESS
-    }
+   }
+   */
 }
