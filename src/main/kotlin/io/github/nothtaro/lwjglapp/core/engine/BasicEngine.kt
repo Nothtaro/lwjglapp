@@ -21,6 +21,10 @@ class BasicEngine(private val title: String, private val width: Int, private val
 
         //GLFWのパラメータ設定
         glfwDefaultWindowHints()
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3)
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3)
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE)
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE)
 
         //ウィンドウの作成
         window = Window(title, width, height)
@@ -79,8 +83,8 @@ class BasicEngine(private val title: String, private val width: Int, private val
 
     private fun render() {
         glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
-        glfwSwapBuffers(window.id)
         logic.render(window)
+        glfwSwapBuffers(window.id)
     }
 
     private fun dispose() {

@@ -23,6 +23,7 @@ class ShaderManager {
     }
 
     private fun createShader(shaderCode: String, type:Int): Int {
+        println("LOAD: $shaderCode")
         val shaderID = glCreateShader(type)
         if(shaderID == 0) {
             throw Exception("シェーダーの作成に失敗しました")
